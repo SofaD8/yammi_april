@@ -18,13 +18,16 @@ from django.contrib import admin
 from django.urls import path
 from django.contrib import admin
 from django.urls import path
-from main.views import index
+from main.views import index, index1, index2, index3
 from yammy_april import settings
 from django.conf.urls.static import static
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', index, name='index'),
+    path('', index1, name='index1'),
+    path('', index2, name='index2'),
+    path('', index3, name='index3'),
 ]
 
 
