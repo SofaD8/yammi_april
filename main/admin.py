@@ -6,10 +6,11 @@ from .models import DishCategory, Dish, EventsCategory, Chefs, Gallery
 
 @admin.register(DishCategory)
 class DishCategoryAdmin(admin.ModelAdmin):
-    list_display = ('id', 'name', 'is_visible', 'sort')
+    list_display = ('id', 'name', 'is_visible', 'sort', 'slug')
     list_editable = ('name', 'is_visible', 'sort')
     list_filter = ('is_visible',)
     search_fields = ('name',)
+    prepopulated_fields = {'slug': ('name',)}
 
 
 @admin.register(Dish)

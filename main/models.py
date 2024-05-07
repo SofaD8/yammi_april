@@ -4,8 +4,14 @@ from django.db import models
 # Create your models here.
 class DishCategory(models.Model):
     name = models.CharField(max_length=255, unique=True)
+    slug = models.SlugField(max_length=255)
     is_visible = models.BooleanField(default=True)
     sort = models.PositiveSmallIntegerField()
+
+
+    def __iter__(self):
+        for dish in self.dishes.filter(is_visible=True):
+            yield dish
 
     def __str__(self):
         return self.name
