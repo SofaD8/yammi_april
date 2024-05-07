@@ -27,7 +27,7 @@ class DishAdmin(admin.ModelAdmin):
 
     @admin.register(EventsCategory)
     class EventsCategoryAdmin(admin.ModelAdmin):
-        list_display = ('photo_src_tag', 'name','description', 'price', 'is_visible', 'sort',)
+        list_display = ('id', 'photo_src_tag', 'name','description', 'price', 'is_visible', 'sort',)
         list_editable = ('price', 'is_visible', 'sort')
         list_filter = ('is_visible',)
         search_fields = ('name',)
@@ -36,11 +36,11 @@ class DishAdmin(admin.ModelAdmin):
             if obj.photo:
                 return mark_safe(f'<img src="{obj.photo.url}" width=50 height=50>')
 
-        photo_src_tag.short_description = 'EventsCategory photo'
+        photo_src_tag.short_description = 'Events photo'
 
     @admin.register(Chefs)
     class ChefsAdmin(admin.ModelAdmin):
-        list_display = ('photo_src_tag', 'name', 'description', 'sort')
+        list_display = ('id', 'photo_src_tag', 'name', 'description', 'sort')
         list_editable = ('description', 'sort')
         search_fields = ('name',)
 
@@ -52,7 +52,7 @@ class DishAdmin(admin.ModelAdmin):
 
     @admin.register(Gallery)
     class GalleryAdmin(admin.ModelAdmin):
-        list_display = ('photo_src_tag', 'sort')
+        list_display = ('id', 'photo_src_tag', 'sort')
         list_editable = ('sort',)
         search_fields = ('sort',)
 
