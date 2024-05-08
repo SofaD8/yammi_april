@@ -4,7 +4,7 @@ from django.db import models
 # Create your models here.
 class DishCategory(models.Model):
     name = models.CharField(max_length=255, unique=True)
-    slug = models.SlugField(max_length=255)
+    slug = models.SlugField(max_length=255, blank=True, null=True)
     is_visible = models.BooleanField(default=True)
     sort = models.PositiveSmallIntegerField()
 
@@ -76,7 +76,10 @@ class Chefs(models.Model):
 
 class Gallery(models.Model):
     sort = models.PositiveSmallIntegerField()
-    photo = models.ImageField(upload_to='photos/', blank=True, null=True)
+    photo = models.ImageField(upload_to='gallery/', blank=True, null=True)
+
+    def __str__(self):
+        return self.sort
 
     class Meta:
         verbose_name = 'Світлина'

@@ -1,7 +1,8 @@
 from django.contrib import admin
+from .models import DishCategory, Dish, EventsCategory, Chefs, Gallery
 from django.utils.safestring import mark_safe
 
-from .models import DishCategory, Dish, EventsCategory, Chefs, Gallery
+#admin.site.register(Gallery)
 
 
 @admin.register(DishCategory)
