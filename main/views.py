@@ -10,7 +10,7 @@ from django.contrib.auth.decorators import login_required, user_passes_test
 
 # Create your views here.
 def index(request):
-    if request.metod == 'GET':
+    if request.method == 'GET':
 
         categories = DishCategory.objects.filter(is_visible=True)
         events = EventsCategory.objects.filter(is_visible=True)
