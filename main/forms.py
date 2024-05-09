@@ -3,7 +3,16 @@ from .models import Reservation
 
 
 class ReservationForm(forms.ModelForm):
+    def clean_name(self):
+        name = self.cleaned_data['name']
+        return f'{name.upper()}'
 
+    #def save(self, commit=True):
+        #reservation = super().save(commit=False)
+        #reservation.name = self.cleaned_data['name']
+        #if commit:
+            #reservation.save()
+        #return reservation
     class Meta:
         model = Reservation
         fields = ('name', 'phone', 'email', 'date', 'time', 'count', 'comment')

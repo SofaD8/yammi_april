@@ -80,7 +80,7 @@ class Gallery(models.Model):
     sort = models.PositiveSmallIntegerField()
     photo = models.ImageField(upload_to='gallery/', blank=True, null=True)
 
-    def __str__(self):
+    def __int__(self):
         return self.sort
 
     class Meta:
