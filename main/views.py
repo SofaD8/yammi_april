@@ -25,6 +25,8 @@ class IndexView(TemplateView):
         context['title_menu'] = 'Check Our <span>Yummy Menu</span>'
         context['title_gallery'] = 'Check <span>Our Gallery</span>'
         context['categories'] = categories
+        context['title_events'] = 'Share <span>Your Moments</span> In Our Restaurant'
+        context['title_chefs'] = 'Our <span>Proffesional</span> Chefs'
         context['events'] = events
         context['chefs'] = chefs
         context['gallery'] = gallery
