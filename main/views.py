@@ -7,6 +7,10 @@ from django.views.generic import TemplateView
 from django.contrib.auth.decorators import login_required, user_passes_test
 
 
+def is_manager(user):
+    return user.groups.filter(name='manager').exists()
+
+
 class IndexView(TemplateView):
     template_name = 'main.html'
 
@@ -36,48 +40,7 @@ class IndexView(TemplateView):
             return redirect('index')
 
 
-
-# Create your views here.
-#def index(request):
-    #if request.method == 'POST':
-        #form = ReservationForm(request.POST)
-        #if form.is_valid():
-            #form.save()
-            #return HttpResponse('Дякуемо за ваше бронювання! Ми зв\'яжемося з вами найближчім часом!')
-    #if request.method == 'GET':
-        #categories = DishCategory.objects.filter(is_visible=True)
-        #events = EventsCategory.objects.filter(is_visible=True)
-        #chefs = Chefs.objects.all()
-        #gallery = Gallery.objects.all()
-        #form = ReservationForm()
-
-        #context = {
-            #'title_menu': 'Check Our <span>Yummy Menu</span>',
-            #'title_gallery': 'Check <span>Our Gallery</span>',
-            #'categories': categories,
-            #'events': events,
-            #'chefs': chefs,
-            #'gallery': gallery,
-            #'form': form,
-        #}
-        #return render(request, 'main.html', context=context)
-
-
-
-#def index1(request):
-    #categories = EventsCategory.objects.filter(is_visible=True)
-    #return HttpResponse('\n'.join(map(str, categories)))
-    #return render(request, 'main.html')
-
-
-#def index2(request):
-    #return HttpResponse('\n'.join(map(str, Chefs.objects.all())))
-    #return render(request, 'main.html')
-
-
-#def index3(request):
-    ##return HttpResponse('\n'.join(map(str, Gallery.objects.all())))
-    #return render(request, 'main.html')
-
+@login_required(login_url='/login/')
+@user_passes_test(is_manager)
 def manager(request):
-    ...
+    return HttpResponse('Manager page')
